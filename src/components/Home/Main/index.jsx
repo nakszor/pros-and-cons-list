@@ -4,7 +4,10 @@ const HomeMain = () =>{
     return(
         <HomeMainStyle>
            <div className="pros">
+           <div className="title-button">
             <p className="margin">Pros</p>
+           <button>+</button>
+            </div>
             <div className="bar2"></div>
                 <ul className="pros-list">
                     <li>
@@ -20,7 +23,11 @@ const HomeMain = () =>{
            <div className="cons">
            <div className="bar"></div>
            <div className="cons-container">
-           <p className="margin cons-title">Cons</p>
+            <div className="title-button">
+            <p className="margin">Cons</p>
+           <button>+</button>
+            </div>
+           
            <div className="bar2"></div>
             <ul className="cons-list">
                 <li>

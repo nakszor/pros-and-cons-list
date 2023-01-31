@@ -25,10 +25,16 @@ justify-content: space-evenly;
     flex-direction: column;
     width: 100%;
 }
+.title-button{
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+    align-items: center;
+}
 .margin{
     margin-left: 10px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 li{
     display: flex;
