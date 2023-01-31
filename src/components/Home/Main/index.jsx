@@ -6,16 +6,16 @@ const HomeMain = () =>{
            <div className="pros">
            <div className="title-button">
             <p className="margin">Pros</p>
-           <button>+</button>
+           <button  className="add-pro">+</button>
             </div>
             <div className="bar2"></div>
                 <ul className="pros-list">
                     <li>
-                        <p>hot</p>
+                        <p>kind</p>
                         <p>10</p>
                     </li>
                     <li>
-                        <p>great sex</p>
+                        <p>beautiful</p>
                         <p>8</p>
                     </li>
                 </ul>
@@ -25,17 +25,17 @@ const HomeMain = () =>{
            <div className="cons-container">
             <div className="title-button">
             <p className="margin">Cons</p>
-           <button>+</button>
+           <button className="add-con">+</button>
             </div>
            
            <div className="bar2"></div>
             <ul className="cons-list">
                 <li>
-                    <p>Crazy jhdkhfkh hgdhjf</p>
+                    <p>jealous</p>
                     <p>10</p>
                 </li>
                 <li>
-                    <p>Agressive</p>
+                    <p>boring</p>
                     <p>8</p>
                 </li>
             </ul>

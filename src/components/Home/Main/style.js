@@ -63,6 +63,7 @@ li{
     color: red;
  }
  .total{
+   
      display: flex;
      justify-content: space-between;
      padding: 5px 10px;
@@ -70,7 +71,23 @@ li{
      border-radius: 10px;
      color: white;
  }
- @media (max-width:320px){
+ .add-con{
+    background-color: #F78181;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 20px;
+    width:20px;
+ }
+ .add-pro{
+    background-color: #819FF7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 20px;
+    width:20px;
+ }
+ @media (max-width:550px){
     flex-direction: column;
    justify-content: unset;
    .pros{
