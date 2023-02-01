@@ -89,6 +89,9 @@ li{
     height: 20px;
     width:20px;
  }
+ //<div className="modal-background">
+//                     <div className="modal-content">
+//                          <div className="modal-header">
  @media (max-width:550px){
     flex-direction: column;
    justify-content: unset;

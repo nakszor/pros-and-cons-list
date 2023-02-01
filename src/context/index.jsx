@@ -11,7 +11,7 @@ const ContextProvider = ({children}) =>{
         },
         {
             name: "kind",
-            points: 10
+            points: 5
         }
     ])
     const [cons, setCons] = useState([

@@ -1,16 +1,29 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Context } from "../../../context"
+import ProsModal from "../ProsModal"
 import { HomeMainStyle } from "./style"
 
 const HomeMain = () =>{
     const {cons, pros, result} = useContext(Context)
+
+    const [open,setOpen] = useState(false)
+    function openModal(){
+       setOpen(true)
+    }
+    function closeModal(){
+        setOpen(false)
+    }
     
     return(
         <HomeMainStyle value={result}>
+            {
+                open &&(
+                    <ProsModal closeModal={closeModal} modalIsOpen={open}/>
+            )}
            <div className="pros">
            <div className="title-button">
             <p className="margin">Pros</p>
-           <button  className="add-pro">+</button>
+           <button onClick={openModal} className="add-pro">+</button>
             </div>
             <div className="bar2"></div>
                 <ul className="pros-list">
