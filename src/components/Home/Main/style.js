@@ -62,14 +62,16 @@ li{
     gap: 5px;
     color: red;
  }
+
  .total{
-   
      display: flex;
      justify-content: space-between;
      padding: 5px 10px;
-     background-color: #F78181;
+     background-color: ${props => (props.value <= 0 ?'#F78181': '#819FF7')};
      border-radius: 10px;
      color: white;
+     height: 2rem;
+     align-items: center;
  }
  .add-con{
     background-color: #F78181;

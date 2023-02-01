@@ -1,8 +1,12 @@
+import { useContext } from "react"
+import { Context } from "../../../context"
 import { HomeMainStyle } from "./style"
 
 const HomeMain = () =>{
+    const {cons, pros, result} = useContext(Context)
+    
     return(
-        <HomeMainStyle>
+        <HomeMainStyle value={result}>
            <div className="pros">
            <div className="title-button">
             <p className="margin">Pros</p>
@@ -10,14 +14,16 @@ const HomeMain = () =>{
             </div>
             <div className="bar2"></div>
                 <ul className="pros-list">
-                    <li>
-                        <p>kind</p>
-                        <p>10</p>
-                    </li>
-                    <li>
-                        <p>beautiful</p>
-                        <p>8</p>
-                    </li>
+                    {
+                        pros.map((elem,index) => {
+                            return(
+                                <li key={index}>
+                                    <p>{elem.name}</p>
+                                    <p>{elem.points}</p>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
            </div>
            <div className="cons">
@@ -30,18 +36,20 @@ const HomeMain = () =>{
            
            <div className="bar2"></div>
             <ul className="cons-list">
-                <li>
-                    <p>jealous</p>
-                    <p>10</p>
-                </li>
-                <li>
-                    <p>boring</p>
-                    <p>8</p>
-                </li>
+            {
+                cons.map((elem, index) => {
+                    return(
+                            <li key={index}>
+                                <p>{elem.name}</p>
+                                <p>{elem.points}</p>
+                            </li>
+                            )
+                        })
+                    }
             </ul>
             <div className="total">
                 <p>total</p>
-                <p>0</p>
+                <p>{result}</p>
             </div>
            </div>
             
