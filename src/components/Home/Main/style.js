@@ -104,6 +104,14 @@ li{
     width: 100%;
     height: 1px;
    }
+   .bar2{
+    width: 100%;
+    height: 1px;
+   }
+   .height{
+    height: 2px;
+   }
+   
    
  }
  

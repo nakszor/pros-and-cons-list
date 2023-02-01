@@ -34,7 +34,7 @@ const HomeMain = () =>{
            <button className="add-con">+</button>
             </div>
            
-           <div className="bar2"></div>
+           <div className="bar2 height"></div>
             <ul className="cons-list">
             {
                 cons.map((elem, index) => {
