@@ -4,7 +4,7 @@ import ProsModal from "../ProsModal"
 import { HomeMainStyle } from "./style"
 
 const HomeMain = () =>{
-    const {cons, pros, result} = useContext(Context)
+    const {cons, pros, setPros, result} = useContext(Context)
 
     const [open,setOpen] = useState(false)
     function openModal(){
@@ -17,9 +17,9 @@ const HomeMain = () =>{
     return(
         <HomeMainStyle value={result}>
             {
-                open &&(
-                    <ProsModal closeModal={closeModal} modalIsOpen={open}/>
-            )}
+                open?(
+                    <ProsModal closeModal={closeModal} pros={pros} setPros={setPros}/>
+            ): null}
            <div className="pros">
            <div className="title-button">
             <p className="margin">Pros</p>
@@ -28,14 +28,18 @@ const HomeMain = () =>{
             <div className="bar2"></div>
                 <ul className="pros-list">
                     {
-                        pros.map((elem,index) => {
+                      pros[0]? pros.map((elem,index) => {
                             return(
                                 <li key={index}>
                                     <p>{elem.name}</p>
                                     <p>{elem.points}</p>
                                 </li>
                             )
-                        })
+                        }) : (
+                            <li className="empty">
+                                <p>add pros</p>
+                            </li>
+                        )
                     }
                 </ul>
            </div>

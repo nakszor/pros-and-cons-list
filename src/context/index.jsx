@@ -5,14 +5,7 @@ export const Context = createContext()
 const ContextProvider = ({children}) =>{
 
     const [pros, setPros] = useState([
-        {
-            name: "beautiful",
-            points: 10
-        },
-        {
-            name: "kind",
-            points: 5
-        }
+       
     ])
     const [cons, setCons] = useState([
         {
@@ -45,6 +38,7 @@ const ContextProvider = ({children}) =>{
         <Context.Provider
         value={{
         pros,
+        setPros,
         cons,
         result
         }}>

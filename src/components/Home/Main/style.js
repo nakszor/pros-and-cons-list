@@ -41,6 +41,9 @@ li{
     justify-content: space-between;
     padding: 5px 10px;
 }
+.empty{
+    min-height: 20vh;
+}
 .bar2{
     width: 100%;
     height: 1px;
@@ -89,9 +92,7 @@ li{
     height: 20px;
     width:20px;
  }
- //<div className="modal-background">
-//                     <div className="modal-content">
-//                          <div className="modal-header">
+
  @media (max-width:550px){
     flex-direction: column;
    justify-content: unset;
