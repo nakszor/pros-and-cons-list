@@ -1,15 +1,27 @@
-
-import { useContext } from "react"
+import React, { useContext } from "react"
 import  {Context}  from "../../../context"
 import { ProsModalStyle } from "./style"
+import * as yup from "yup"
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const ProsModal = ({closeModal}) => {
     
+    const validatePro = yup.object().shape({
+        name: yup.string().required("Name is required!"),
+        points: yup.number().required("Points is required!")
+    })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm({
+        resolver: yupResolver(validatePro),
+      });
+    
     const {pros, setPros} = useContext(Context)
 
-    const handleSubmit = (pros, setPros) => {
-       console.log(setPros)
-    }
+    
     return(                
             <ProsModalStyle >
                 <div className="modal-content">
@@ -19,13 +31,9 @@ const ProsModal = ({closeModal}) => {
                     </div>
                     <form action="submit" onSubmit={(e) => e.preventDefault()}>
                         <label  htmlFor="name">Pro</label>
-                        <input type="text" name="name"   onChange={(event) =>
-                        setPros({ ...pros, name: event.target.value })
-                      } required />
+                        <input type="text" name="name" required  {...register("name")}/>
                         <label  htmlFor="points">Points</label>
-                        <select type="text" name="points"  onChange={(event) =>
-                        setPros({ ...pros, points: event.target.value })
-                      } required> 
+                        <select type="text" name="points" required  {...register("points")}> 
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
