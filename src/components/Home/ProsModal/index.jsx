@@ -6,13 +6,16 @@ import { useForm } from "react-hook-form";
 import ErrorMessage from "../Error";
 
 
-const ProsModal = ({closeModal}) => {
+const ProsModal = ({proData, setProData,handleProSubmit, closeModal}) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-   
-    console.log(watch("example"))
     
     const {pros, setPros} = useContext(Context)
-
+    function proSubmit(event){
+        event.preventDefault()
+        console.log(proData)
+        handleProSubmit()
+        closeModal()
+    }
     return(                
             <ProsModalStyle >
                 <div className="modal-content">
@@ -20,12 +23,14 @@ const ProsModal = ({closeModal}) => {
                         <h3>Add new pro</h3>
                         <button onClick={closeModal}>X</button>
                     </div>
-                    <form action="submit" onSubmit={handleSubmit}>
+                    <form action="submit" onSubmit={(event)=>{proSubmit(event)}}>
                         <label  htmlFor="name">Pro</label>
-                        <input type="text" name="name" {...register("name", { required: true })}/>
+                        <input type="text" name="name" {...register("name", { required: true })}
+                         onChange={(event)=>setProData({...proData, name: event.target.value})}/>
                         {errors.name && <ErrorMessage message={"Please insert a name!"}/> }
                         <label  htmlFor="points">Points</label>
-                        <select type="text" name="points" {...register("points", { required: true })}> 
+                        <select type="text" name="points" {...register("points", { required: true })} 
+                         onChange={(event)=>setProData({...proData, points: event.target.value})}> 
                             <option>-</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -39,7 +44,7 @@ const ProsModal = ({closeModal}) => {
                             <option value="10">10</option>
                         </select>
                          {errors.points && <ErrorMessage message={"Please select a number!"}/> }
-                        <button className="add-pro-button" onClick={handleSubmit(pros,setPros)}>Add to pros</button>
+                        <button className="add-pro-button" >Add to pros</button>
                    </form>
                 </div>
             </ProsModalStyle>

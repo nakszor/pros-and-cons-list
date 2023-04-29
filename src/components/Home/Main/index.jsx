@@ -13,12 +13,16 @@ const HomeMain = () =>{
     function closeModal(){
         setOpen(false)
     }
+    const [proData, setProData] = useState({})
+    function handleProSubmit(){
+        setPros((previus) => [...previus, proData])
+    }
     
     return(
         <HomeMainStyle value={result}>
             {
                 open?(
-                    <ProsModal closeModal={closeModal} pros={pros} setPros={setPros}/>
+                    <ProsModal closeModal={closeModal} proData={proData} setProData={setProData} handleProSubmit={handleProSubmit}/>
             ): null}
             <div className="pros">
                 <div className="title-button">
@@ -66,7 +70,7 @@ const HomeMain = () =>{
                         </ul>
                     </div>
                 <div className="total">
-                    <p>total</p>
+                    <p>score</p>
                     <p>{result}</p>
                 </div>
             </div>        

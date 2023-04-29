@@ -11,14 +11,6 @@ const ContextProvider = ({children}) =>{
         {
             name: "lunatic",
             points: 10
-        },
-        {
-            name: "jealous",
-            points: 8
-        },
-        {
-            name: "agressive",
-            points: 10
         }
     ])
 

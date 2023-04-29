@@ -77,7 +77,6 @@ li{
      justify-content: space-between;
      padding: 8px 8px;
      background-color: ${props => (props.value <= 0 ?'#F78181': '#819FF7')};
-     border-radius: 10px;
      color: white;
      height: 1rem;
  }
