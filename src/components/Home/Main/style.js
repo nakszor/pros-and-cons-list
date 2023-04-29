@@ -21,6 +21,12 @@ justify-content: space-evenly;
     display: flex;
 }
 .cons-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cons-header{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -69,12 +75,11 @@ li{
  .total{
      display: flex;
      justify-content: space-between;
-     padding: 5px 10px;
+     padding: 8px 8px;
      background-color: ${props => (props.value <= 0 ?'#F78181': '#819FF7')};
      border-radius: 10px;
      color: white;
-     height: 2rem;
-     align-items: center;
+     height: 1rem;
  }
  .add-con{
     background-color: #F78181;
@@ -92,17 +97,27 @@ li{
     height: 20px;
     width:20px;
  }
+ .cons-list{
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+.pros-list{
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
 
  @media (max-width:550px){
     flex-direction: column;
    justify-content: unset;
    .pros{
     width: 100%;
-    height: fit-content;
+    height: 50%;
    }
    .cons{
-    flex-direction: column;
     width: 100%;
+    height: 50%;
+    flex-direction: column;
    }
    .bar{
     width: 100%;
@@ -113,9 +128,20 @@ li{
     height: 1px;
    }
    .height{
-    height: 2px;
+    height: 1px;
    }
-   
+   .cons-container{
+    height: 100%;
+    width: 100%;
+   }
+   .cons-list{
+    max-height: 30vh;
+    overflow-y: scroll;
+   }
+   .pros-list{
+    max-height: 30vh;
+    overflow-y: scroll;
+   }
    
  }
  

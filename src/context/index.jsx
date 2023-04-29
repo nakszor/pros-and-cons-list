@@ -9,6 +9,10 @@ const ContextProvider = ({children}) =>{
     ])
     const [cons, setCons] = useState([
         {
+            name: "lunatic",
+            points: 10
+        },
+        {
             name: "jealous",
             points: 8
         },
