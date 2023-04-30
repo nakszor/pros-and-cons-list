@@ -4,25 +4,16 @@ import ProsModal from "../ProsModal"
 import { HomeMainStyle } from "./style"
 
 const HomeMain = () =>{
-    const {cons, pros, setPros, result} = useContext(Context)
+    const {cons, pros, result, open, openModal} = useContext(Context)
 
-    const [open,setOpen] = useState(false)
-    function openModal(){
-       setOpen(true)
-    }
-    function closeModal(){
-        setOpen(false)
-    }
-    const [proData, setProData] = useState({})
-    function handleProSubmit(){
-        setPros((previus) => [...previus, proData])
-    }
+
+    
     
     return(
         <HomeMainStyle value={result}>
             {
                 open?(
-                    <ProsModal closeModal={closeModal} proData={proData} setProData={setProData} handleProSubmit={handleProSubmit}/>
+                    <ProsModal/>
             ): null}
             <div className="pros">
                 <div className="title-button">

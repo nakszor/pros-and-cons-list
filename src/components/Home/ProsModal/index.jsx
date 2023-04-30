@@ -1,21 +1,12 @@
 import React, { useContext } from "react"
-import  {Context}  from "../../../context"
+import  { Context }  from "../../../context"
 import { ProsModalStyle } from "./style"
-import * as yup from "yup"
-import { useForm } from "react-hook-form";
-import ErrorMessage from "../Error";
 
 
-const ProsModal = ({proData, setProData,handleProSubmit, closeModal}) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const ProsModal = () => {
     
-    const {pros, setPros} = useContext(Context)
-    function proSubmit(event){
-        event.preventDefault()
-        console.log(proData)
-        handleProSubmit()
-        closeModal()
-    }
+    const {pros, proSubmit, generateId, proData, setProData, closeModal} = useContext(Context)
+
     return(                
             <ProsModalStyle >
                 <div className="modal-content">
@@ -25,12 +16,12 @@ const ProsModal = ({proData, setProData,handleProSubmit, closeModal}) => {
                     </div>
                     <form action="submit" onSubmit={(event)=>{proSubmit(event)}}>
                         <label  htmlFor="name">Pro</label>
-                        <input type="text" name="name" {...register("name", { required: true })}
-                         onChange={(event)=>setProData({...proData, name: event.target.value})}/>
-                        {errors.name && <ErrorMessage message={"Please insert a name!"}/> }
+                        <input type="text" name="name" 
+                         onChange={(event)=>setProData({...proData, id: generateId(pros), name: event.target.value, key: "pro"})}/>
+                       
                         <label  htmlFor="points">Points</label>
-                        <select type="text" name="points" {...register("points", { required: true })} 
-                         onChange={(event)=>setProData({...proData, points: event.target.value})}> 
+                        <select type="text" name="points"  
+                         onChange={(event)=>setProData({...proData, points: Number(event.target.value)})}> 
                             <option>-</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -43,11 +34,9 @@ const ProsModal = ({proData, setProData,handleProSubmit, closeModal}) => {
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                         {errors.points && <ErrorMessage message={"Please select a number!"}/> }
                         <button className="add-pro-button" >Add to pros</button>
                    </form>
                 </div>
-            </ProsModalStyle>
-            )   
+            </ProsModalStyle>)   
 }
 export default ProsModal
