@@ -1,28 +1,26 @@
 import React, { useContext } from "react"
 import  { Context }  from "../../../context"
-import { ProsModalStyle } from "./style"
+import { ModalStyle } from "./style"
 
+const Modal = ({name, uppercase, plural, submit, setData, data, state, close, color}) => {
 
-const ProsModal = () => {
-    
-    const {pros, proSubmit, generateId, proData, setProData, closeModal} = useContext(Context)
+    const {  generateId } = useContext(Context)
 
     return(                
-            <ProsModalStyle >
+            <ModalStyle name={name} >
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h3>Add new pro</h3>
-                        <button onClick={closeModal}>X</button>
+                        <h3>Add new {name}</h3>
+                        <button onClick={close}>X</button>
                     </div>
-                    <form action="submit" onSubmit={(event)=>{proSubmit(event)}}>
-                        <label  htmlFor="name">Pro</label>
+                    <form action="submit" onSubmit={(event)=>{submit(event)}}>
+                        <label  htmlFor="name">{uppercase}</label>
                         <input type="text" name="name" 
-                         onChange={(event)=>setProData({...proData, id: generateId(pros), name: event.target.value, key: "pro"})}/>
+                         onChange={(event)=>setData({...data, id: generateId(state), name: event.target.value, key: {name}})}/>
                        
                         <label  htmlFor="points">Points</label>
                         <select type="text" name="points"  
-                         onChange={(event)=>setProData({...proData, points: Number(event.target.value)})}> 
-                            <option>-</option>
+                         onChange={(event)=>setData({...data, points: Number(event.target.value)})}> 
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -34,9 +32,9 @@ const ProsModal = () => {
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                        <button className="add-pro-button" >Add to pros</button>
+                        <button className="add-data-button" >Add to {plural}</button>
                    </form>
                 </div>
-            </ProsModalStyle>)   
+            </ModalStyle>)   
 }
-export default ProsModal
+export default Modal

@@ -4,15 +4,8 @@ export const Context = createContext()
 
 const ContextProvider = ({children}) =>{
 
-    const [pros, setPros] = useState([
-       
-    ])
-    const [cons, setCons] = useState([
-        {
-            name: "lunatic",
-            points: 10
-        }
-    ])
+    const [pros, setPros] = useState([])
+    const [cons, setCons] = useState([])
   
     const total = (list) => {
         let value = 0
@@ -30,36 +23,57 @@ const ContextProvider = ({children}) =>{
     const totalCons = total(cons)
     const result = totalPros - totalCons
     
-    function handleProSubmit(proData){
-        setPros((previus) => [...previus, proData])
+    function handleSubmit(data, setState){
+        setState((previus) => [...previus, data])
     }
     const [proData, setProData] = useState({})
   
     function proSubmit(event){
         event.preventDefault()
-        handleProSubmit(proData)
-        closeModal()
+        handleSubmit(proData, setPros)
+        closeProsModal()
+    }
+
+    const [prosModal,setProsModal] = useState(false)
+
+    function openProsModal(){
+       setProsModal(true)
+    }
+    function closeProsModal(){
+        setProsModal(false)
+    }
+    const [conData, setConData] = useState({})
+  
+    function conSubmit(event){
+        event.preventDefault()
+        handleSubmit(conData, setCons)
+        closeConsModal()
+    }
+    const [consModal,setConsModal] = useState(false)
+    function openConsModal(){
+       setConsModal(true)
+    }
+    function closeConsModal(){
+        setConsModal(false)
     }
     function generateId(array) {
         return array.length ? Math.max(...array.map(item => item.id)) + 1 : 1
     }
-    const [open,setOpen] = useState(false)
-    function openModal(){
-       setOpen(true)
-    }
-    function closeModal(){
-        setOpen(false)
-    }
     return(
         <Context.Provider
         value={{
-        open,
-        setOpen,
-        openModal,
-        closeModal,
+        prosModal,
+        openProsModal,
+        closeProsModal,
+        consModal,
+        openConsModal,
+        closeConsModal,
         pros,
         setPros,
         proSubmit,
+        conSubmit,
+        conData,
+        setConData,
         generateId,
         proData,
         setProData,

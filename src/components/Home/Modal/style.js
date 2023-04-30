@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProsModalStyle = styled.div`
+export const ModalStyle = styled.div`
 position: fixed;
 top: 0;
 right: 0;
@@ -18,7 +18,7 @@ justify-content: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--blue);
+    background-color:  ${props => props.name === 'con' ?'#F78181': '#819FF7'};
     padding: 15px;
     border-radius: 8px;
     gap: 1rem;
@@ -31,7 +31,7 @@ justify-content: center;
     display: flex;
     justify-content: space-between;
     button{
-    background-color: var(--red);
+    background-color: ${props => props.name === 'con' ?'#F78181': '#819FF7'};
     color: white;
     font-weight: 700;
     border: none;
@@ -52,7 +52,7 @@ label{
     text-align: center;
 }
 input{
-    background-color: var(--blue);
+    background-color: ${props => (props.name == 'con' ?'#F78181': '#819FF7')};
     border: solid 2px transparent;
     border-radius: 5px;
     padding-left: 5px;
@@ -60,25 +60,37 @@ input{
 }
 input:focus{
     border: solid 2px var(--light-blue);
+    font-family: 'Gochi Hand', cursive;
+    font-weight: 600;
+    font-size: 15px;
 }
 select{
-    background-color: var(--blue);
+    background-color:${props => (props.name == 'con' ?'#F78181': '#819FF7')};;
     border: solid 2px transparent;
     border-radius: 5px;
     height: 25px;
     margin-bottom: 13px;
+    font-family: 'Gochi Hand', cursive;
+    font-weight: 600;
+    font-size: 15px;
     
     option{
     border-radius: 5px;
     height: 25px;
+    font-family: 'Gochi Hand', cursive;
+    font-weight: 600;
+    font-size: 15px;
     }
 }
-.add-pro-button{
-    background-color: var(--blue);
+.add-data-button{
+    background-color: ${props => (props.name == 'con' ?'#F78181': '#819FF7')};;
     margin-bottom: 5px;
     border: none;
     height: 25px;
     border-radius: 5px;
+    font-family: 'Gochi Hand', cursive;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 `

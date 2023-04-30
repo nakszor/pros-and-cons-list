@@ -1,24 +1,33 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { Context } from "../../../context"
-import ProsModal from "../ProsModal"
+import Modal from "../Modal"
 import { HomeMainStyle } from "./style"
 
 const HomeMain = () =>{
-    const {cons, pros, result, open, openModal} = useContext(Context)
-
-
-    
+    const {cons, pros, result, prosModal,
+        openProsModal, closeProsModal, proSubmit,
+        setProData, proData, openConsModal, consModal, 
+        closeConsModal, conData, conSubmit, setConData} = useContext(Context)
     
     return(
         <HomeMainStyle value={result}>
             {
-                open?(
-                    <ProsModal/>
+                prosModal?(
+                    <Modal name={"pro"} uppercase={"Pro"} plural={"pros"} 
+                    submit={proSubmit} setData={setProData} data={proData}
+                     state={pros} close={closeProsModal} />
             ): null}
+            {
+                consModal?(
+                    <Modal name={"con"} uppercase={"Con"} plural={"cons"} 
+                    submit={conSubmit} setData={setConData} data={conData}
+                     state={cons} close={closeConsModal}/>
+                ):null
+            }
             <div className="pros">
                 <div className="title-button">
                     <p className="margin">Pros</p>
-                    <button onClick={openModal} className="add-pro">+</button>
+                    <button onClick={openProsModal} className="add-pro">+</button>
                 </div>
                 <div className="bar2"></div>
                     <ul className="pros-list">
@@ -44,19 +53,22 @@ const HomeMain = () =>{
                     <div className="cons-header">
                         <div className="title-button">
                             <p className="margin">Cons</p>
-                            <button className="add-con">+</button>
+                            <button onClick={openConsModal} className="add-con">+</button>
                         </div>
                         <div className="bar2 height"></div>
                         <ul className="cons-list">
                             {
-                             cons.map((elem, index) => {
+                             cons[0]? cons.map((elem, index) => {
                                 return(
                                         <li key={index}>
                                             <p>{elem.name}</p>
                                             <p>{elem.points}</p>
                                         </li>
                                         )
-                                    })
+                                    }): (
+                                    <li className="empty">
+                                        <p>add cons</p>
+                                    </li>)
                             }
                         </ul>
                     </div>
