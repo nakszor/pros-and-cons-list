@@ -28,8 +28,7 @@ const ContextProvider = ({children}) =>{
     }
     const [proData, setProData] = useState({})
   
-    function proSubmit(event){
-        event.preventDefault()
+    function proSubmit(){
         handleSubmit(proData, setPros)
         closeProsModal()
     }
@@ -44,8 +43,7 @@ const ContextProvider = ({children}) =>{
     }
     const [conData, setConData] = useState({})
   
-    function conSubmit(event){
-        event.preventDefault()
+    function conSubmit(){
         handleSubmit(conData, setCons)
         closeConsModal()
     }

@@ -79,6 +79,7 @@ li{
      background-color: ${props => (props.value <= 0 ?'#F78181': '#819FF7')};
      color: white;
      height: 1rem;
+     border-bottom-right-radius: 8px;
  }
  .add-con{
     background-color: #F78181;
@@ -141,7 +142,9 @@ li{
     max-height: 30vh;
     overflow-y: scroll;
    }
-   
+   .total{
+    border-bottom-left-radius: 8px;
+   }
  }
  
 `

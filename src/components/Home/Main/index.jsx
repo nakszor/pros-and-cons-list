@@ -41,7 +41,7 @@ const HomeMain = () =>{
                                 )
                             }) : (
                                 <li className="empty">
-                                    <p>add pros</p>
+                                    <a onClick={openProsModal}><p>add pros</p></a>
                                 </li>
                             )
                         }
@@ -67,7 +67,7 @@ const HomeMain = () =>{
                                         )
                                     }): (
                                     <li className="empty">
-                                        <p>add cons</p>
+                                        <a onClick={openConsModal}><p>add cons</p></a>
                                     </li>)
                             }
                         </ul>
