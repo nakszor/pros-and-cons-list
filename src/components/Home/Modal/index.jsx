@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
+
 const Modal = ({name, uppercase, plural, submit, setData, data, state, close, color}) => {
     const schema = yup.object().shape({
         name: yup.string().required("name is required!"),

@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { Context } from "../../../context"
 import Modal from "../Modal"
 import { HomeMainStyle } from "./style"
+import { FaTrashAlt } from 'react-icons/fa'
 
 const HomeMain = () =>{
     const {cons, pros, result, prosModal,
@@ -62,7 +63,10 @@ const HomeMain = () =>{
                                 return(
                                         <li key={index}>
                                             <p>{elem.name}</p>
-                                            <p>{elem.points}</p>
+                                            <div className="">
+                                                <p>{elem.points}</p>
+                                                <FaTrashAlt/>
+                                            </div>
                                         </li>
                                         )
                                     }): (
