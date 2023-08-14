@@ -7,7 +7,17 @@ border-radius: 8px;
 background-color: #F2F5A9;
 display: flex;
 justify-content: space-evenly;
+.border{
+    border: solid red 1px;
+}
+.border2{
+    border: solid blue 1px;
+}
+.total-cons{
+    display: flex;
+    justify-content: space-between;
 
+}
 .bar{
     width: 1px;
     height: 100%;
@@ -24,6 +34,7 @@ justify-content: space-evenly;
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: auto;
     justify-content: space-between;
 }
 .cons-header{
@@ -39,6 +50,11 @@ justify-content: space-evenly;
 }
 .margin{
     margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.margin2{
+    margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -106,7 +122,6 @@ li{
     overflow-y: scroll;
 }
 
-
  @media (max-width:550px){
     flex-direction: column;
    justify-content: unset;
@@ -135,7 +150,8 @@ li{
     width: 100%;
    }
    .cons-list{
-    max-height: 30vh;
+    border: solid yellow 2px;
+    max-height: 40vh;
     overflow-y: scroll;
    }
    .pros-list{

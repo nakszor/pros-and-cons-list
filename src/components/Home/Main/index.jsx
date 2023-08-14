@@ -2,13 +2,15 @@ import { useContext } from "react"
 import { Context } from "../../../context"
 import Modal from "../Modal"
 import { HomeMainStyle } from "./style"
-import { FaTrashAlt } from 'react-icons/fa'
+import EditDeleteModal from "./EditModal"
+import { AiFillEdit, AiFillDelete } from "react-icons/ai"
 
 const HomeMain = () =>{
     const {cons, pros, result, prosModal,
         openProsModal, closeProsModal, proSubmit,
         setProData, proData, openConsModal, consModal, 
-        closeConsModal, conData, conSubmit, setConData} = useContext(Context)
+        closeConsModal, conData, conSubmit, setConData, 
+        editProsModal, openEditProsModal, closeEditProsModal} = useContext(Context)
     
     return(
         <HomeMainStyle value={result}>
@@ -25,6 +27,9 @@ const HomeMain = () =>{
                      state={cons} close={closeConsModal}/>
                 ):null
             }
+            {
+                editProsModal?(<EditDeleteModal/>):null
+            }
             <div className="pros">
                 <div className="title-button">
                     <p className="margin">Pros</p>
@@ -35,7 +40,7 @@ const HomeMain = () =>{
                         {
                         pros[0]? pros.map((elem,index) => {
                                 return(
-                                    <li key={index}>
+                                    <li key={index} onClick={openEditProsModal}>
                                         <p>{elem.name}</p>
                                         <p>{elem.points}</p>
                                     </li>
@@ -50,8 +55,8 @@ const HomeMain = () =>{
             </div>
             <div className="cons">
                 <div className="bar"></div>
-                <div className="cons-container"> 
-                    <div className="cons-header">
+                <div className="cons-container border"> 
+                    <div className="cons-header border2">
                         <div className="title-button">
                             <p className="margin">Cons</p>
                             <button onClick={openConsModal} className="add-con">+</button>
@@ -61,12 +66,13 @@ const HomeMain = () =>{
                             {
                              cons[0]? cons.map((elem, index) => {
                                 return(
-                                        <li key={index}>
+                                        <li className="cons-itens" key={index} >
                                             <p>{elem.name}</p>
-                                            <div className="">
-                                                <p>{elem.points}</p>
-                                                <FaTrashAlt/>
+                                            <div className="edit-delete-container">
+                                                <AiFillDelete/>
+                                                <AiFillEdit/>
                                             </div>
+                                            <p>{elem.points}</p>
                                         </li>
                                         )
                                     }): (
@@ -75,13 +81,18 @@ const HomeMain = () =>{
                                     </li>)
                             }
                         </ul>
+                        <div className="border total-cons">
+                            <p className="margin">Total cons</p>
+                            <p className="margin2">value</p>
+                        </div>
                     </div>
-                <div className="total">
+                
+            </div>        
+        </div>
+        <div className="total">
                     <p>score</p>
                     <p>{result}</p>
                 </div>
-            </div>        
-        </div>
     </HomeMainStyle>
 )}
 

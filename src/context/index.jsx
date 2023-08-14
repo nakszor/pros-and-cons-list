@@ -54,6 +54,14 @@ const ContextProvider = ({children}) =>{
     function closeConsModal(){
         setConsModal(false)
     }
+    const [editProsModal,setEditProsModal] = useState(false)
+
+    function openEditProsModal(){
+       setEditProsModal(true)
+    }
+    function closeEditProsModal(){
+        setEditProsModal(false)
+    }
     function generateId(array) {
         return array.length ? Math.max(...array.map(item => item.id)) + 1 : 1
     }
@@ -76,7 +84,10 @@ const ContextProvider = ({children}) =>{
         proData,
         setProData,
         cons,
-        result
+        result,
+        openEditProsModal,
+        closeEditProsModal,
+        editProsModal
         }}>
             {children}
         </Context.Provider>
